@@ -82,6 +82,7 @@ conn = st.connection("postgresql", type="sql")
 page_title = f'Article'
 page_add_voc = f'Add word'
 page_other = f'Other'
+new_df = []
 tab_article, tab_add_voc, tab_other = st.tabs([page_title, page_add_voc, page_other])
 with tab_article:
     st.title(page_title)
@@ -90,11 +91,15 @@ with tab_article:
         voc_arr = get_article_voc()
     with col_voc:
         voc_set = list(set(voc_arr))
-        voc_set.remove('')
+        if '' in voc_set:
+            voc_set.remove('')
         if len(voc_set) > 1:
             existed_df = search_dutch_list(voc_set)
         new_df = [item for item in voc_set if item not in existed_df.values]
-        st.dataframe(new_df, use_container_width=True)
+        if len(new_df) > 0:
+            st.dataframe(new_df, use_container_width=True)
+        else:
+            st.markdown("#### There is no new word.")
         # st.dataframe(voc_set, use_container_width=True)
 with tab_add_voc:
     st.title(page_add_voc)
