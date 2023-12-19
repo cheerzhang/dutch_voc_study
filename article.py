@@ -4,6 +4,16 @@ import numpy as np
 from sqlalchemy import text
 
 
+def search_dutch_list(dutch_arr):
+    dutch_values_str = ', '.join([f"'{value}'" for value in dutch_arr])
+    sql = f"SELECT * FROM dutch_vocabulary WHERE dutch in ({dutch_values_str});"
+    try:
+        df = conn.query(sql)
+        return df
+    except Exception as e:
+        st.error(f"Error executing search query: {e}")
+
+
 def search_data(dutch):
     sql = f"SELECT * FROM dutch_vocabulary WHERE dutch = '{dutch}';"
     try:
@@ -16,6 +26,7 @@ def search_data(dutch):
             return False
     except Exception as e:
         st.error(f"Error executing search query: {e}")
+
 
 
 def insert_data(dutch, english):
@@ -36,7 +47,7 @@ def get_article_voc():
         "", 
         height = 500
     )
-    txt = txt.replace('.', ' ')
+    txt = txt.replace('.', ' ').replace('\n', '')
     voc_arr = txt.split(' ')
     return voc_arr
 
@@ -79,9 +90,14 @@ with tab_article:
         voc_arr = get_article_voc()
     with col_voc:
         voc_set = list(set(voc_arr))
-        st.dataframe(voc_set, use_container_width=True)
+        voc_set.remove('')
+        if len(voc_set) > 1:
+            existed_df = search_dutch_list(voc_set)
+        new_df = [item for item in voc_set if item not in existed_df.values]
+        st.dataframe(new_df, use_container_width=True)
+        # st.dataframe(voc_set, use_container_width=True)
 with tab_add_voc:
     st.title(page_add_voc)
-    add_voc_func(voc_arr)
+    add_voc_func(new_df)
 
     
