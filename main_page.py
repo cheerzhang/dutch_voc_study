@@ -108,11 +108,27 @@ def main():
     if choice == "View All Nouns":
         st.subheader("All Noun in the Database")
         df = load_data(NOUN_CSV)
+        # download
+        csv = df.to_csv(index=False)
+        st.download_button(
+            label="Download Nouns as CSV",
+            data=csv,
+            file_name='dutch_words.csv',
+            mime='text/csv',
+        )
+        # display
         st.dataframe(df, use_container_width=True)
+        
 
     elif choice == "View All Verbs":
         st.subheader("All Verbs in the Database")
         df = load_data(VERB_CSV)
+        st.download_button(
+            label="Download Verbs as CSV",
+            data=csv,
+            file_name='dutch_verbs.csv',
+            mime='text/csv',
+        )
         st.dataframe(df, use_container_width=True)
 
     elif choice == "Search Noun":
