@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dutch Words</title>
+</head>
+<body>
+    <h1>List of Dutch Words</h1>
+
+    <!-- Search and Add Forms -->
+    <div>
+        <h2>Search Word</h2>
+        <form method="POST">
+            <input type="text" name="search_word" placeholder="Enter Dutch word" required>
+            <button type="submit" name="search">Search</button>
+        </form>
+
+        <h2>Add Word</h2>
+        <form method="POST">
+            <input type="text" name="word" placeholder="Word" required>
+            <input type="text" name="plural" placeholder="Plural" required>
+            <input type="text" name="gender" placeholder="Gender (de/het)" required>
+            <input type="text" name="translation_en" placeholder="English Translation" required>
+            <input type="text" name="translation_zh" placeholder="Chinese Translation" required>
+            <input type="text" name="difficulty" placeholder="Difficulty (A1, A2, B1, B2, C1)" required>
+            <button type="submit" name="add">Add</button>
+        </form>
+    </div>
+
+    <!-- Word List Table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Word</th>
+                <th>Plural</th>
+                <th>Gender</th>
+                <th>English Translation</th>
+                <th>Chinese Translation</th>
+                <th>Difficulty</th>
+                <th>Search Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if words %}
+                {% for word in words %}
+                <tr>
+                    <td>{{ word[1] }}</td>
+                    <td>{{ word[2] }}</td>
+                    <td>{{ word[3] }}</td>
+                    <td>{{ word[4] }}</td>
+                    <td>{{ word[5] }}</td>
+                    <td>{{ word[6] }}</td>
+                    <td>{{ word[7] }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7">No words found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
