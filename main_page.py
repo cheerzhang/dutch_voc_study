@@ -123,6 +123,7 @@ def main():
     elif choice == "View All Verbs":
         st.subheader("All Verbs in the Database")
         df = load_data(VERB_CSV)
+        csv = df.to_csv(index=False)
         st.download_button(
             label="Download Verbs as CSV",
             data=csv,
