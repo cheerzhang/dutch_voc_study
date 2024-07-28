@@ -143,14 +143,15 @@ def main():
     elif choice == "Add Verb":
         st.subheader("Add New Verb")
         verb = st.text_input("Verb")
-        plural = st.text_input("Plural")
-        past_tense = st.text_input("Past Tense")
-        past_participle = st.text_input("Past Participle")
+        singular_present = st.text_input("singular_present")
+        plural_form = st.text_input("plural_form")
+        past_singular = st.text_input("past_singular")
+        past_plural = st.text_input("past_plural")
+        perfect_participle = st.text_input("perfect_participle")
         difficulty = st.selectbox("Difficulty", ['A1', 'A2', 'B1', 'B2', 'C1'])
-        
         if st.button("Save"):
             if not search_verb_data(verb):
-                add_verb(verb, plural, past_tense, past_participle, difficulty)
+                add_verb(verb, plural, singular_present, plural_form, past_singular, past_plural, perfect_participle, difficulty)
             else:
                 st.info(f":orange[{word}] has already been in the verb DB")
 
