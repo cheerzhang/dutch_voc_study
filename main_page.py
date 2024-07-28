@@ -133,7 +133,10 @@ def main():
         difficulty = st.selectbox("Difficulty", ['A1', 'A2', 'B1', 'B2', 'C1'])
         
         if st.button("Save"):
-            add_word(word, plural, gender, translation_en, translation_zh, difficulty)
+            if not search_word_data(word):
+                add_word(word, plural, gender, translation_en, translation_zh, difficulty)
+            else:
+                st.info(f":orange[{word}] has already been in the noun DB")
 
     elif choice == "Add Verb":
         st.subheader("Add New Verb")
@@ -144,7 +147,10 @@ def main():
         difficulty = st.selectbox("Difficulty", ['A1', 'A2', 'B1', 'B2', 'C1'])
         
         if st.button("Save"):
-            add_verb(verb, plural, past_tense, past_participle, difficulty)
+            if not search_verb_data(verb):
+                add_verb(verb, plural, past_tense, past_participle, difficulty)
+            else:
+                st.info(f":orange[{word}] has already been in the verb DB")
 
 if __name__ == "__main__":
     main()
