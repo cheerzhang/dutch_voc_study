@@ -75,7 +75,7 @@ def add_word(word, plural, gender, translation_en, translation_zh, difficulty):
         df.to_csv(NOUN_CSV, index=False)
         st.write(f"Word '{word}' added to the database.")
 
-def add_verb(verb, singular_present, plural_form, past_singular, past_plural, perfect_participle, difficulty):
+def add_verb(verb, singular_present, plural_form, past_singular, past_plural, perfect_participle, translation_en, translation_zh, difficulty):
     df = load_data(VERB_CSV)
     if verb.lower() in df['verb'].str.lower().values:
         st.write(f"Verb '{verb}' already exists in the database.")
@@ -87,6 +87,8 @@ def add_verb(verb, singular_present, plural_form, past_singular, past_plural, pe
             'past_singular': [past_singular],
             'past_plural': [past_plural],
             'perfect_participle': [perfect_participle],
+            'translation_en': [translation_en],
+            'translation_zh': [translation_zh],
             'difficulty': [difficulty],
             'search_count': [0]
         })
@@ -148,10 +150,12 @@ def main():
         past_singular = st.text_input("past_singular")
         past_plural = st.text_input("past_plural")
         perfect_participle = st.text_input("perfect_participle")
+        translation_en = st.text_input("English Translation")
+        translation_zh = st.text_input("Chinese Translation")
         difficulty = st.selectbox("Difficulty", ['A1', 'A2', 'B1', 'B2', 'C1'])
         if st.button("Save"):
             if not search_verb_data(verb):
-                add_verb(verb, plural, singular_present, plural_form, past_singular, past_plural, perfect_participle, difficulty)
+                add_verb(verb, singular_present, plural_form, past_singular, past_plural, perfect_participle, translation_en, translation_zh, difficulty)
             else:
                 st.info(f":orange[{word}] has already been in the verb DB")
 
