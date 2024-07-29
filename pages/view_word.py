@@ -27,19 +27,20 @@ if st.session_state.role == 'guest':
     if os.path.exists(file_path):
         st.write(f"{file_path} found.")
         df_n = pd.read_csv("guest_NOUN.csv")
+        st.subheader("All Nouns in the Database")
+        st.dataframe(df_n, use_container_width=True)
+        csv_n = df_n.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download Nouns as CSV",
+            data=csv_n,
+            file_name=f"{st.session_state.username}_NOUN.csv",
+            mime='text/csv',
+        )
     else:
         st.write(f"{file_path} not found.")
     
     df_v = pd.read_csv("guest_VERB.csv")
-    st.subheader("All Nouns in the Database")
-    st.dataframe(df_n, use_container_width=True)
-    csv_n = df_n.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Download Nouns as CSV",
-        data=csv_n,
-        file_name=f"{st.session_state.username}_NOUN.csv",
-        mime='text/csv',
-    )
+    
     
     st.subheader("All Verbs in the Database")
     st.dataframe(df_v, use_container_width=True)
