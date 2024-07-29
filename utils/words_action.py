@@ -18,9 +18,9 @@ def load_user_data(username, data_type='NOUN'):
     if not os.path.exists(f"{username}_{data_type}.csv"):
         user_df = guest_df.copy()
         user_df['admin_search_count'] = 0
-    user_df.to_csv(f"{username}_{data_type}.csv", index=False)
-    user_df = pd.read_csv(f"{username}_{data_type}.csv")
-    return guest_df, user_df
+        user_df.to_csv(f"{username}_{data_type}.csv", index=False)
+    user_df_ = pd.read_csv(f"{username}_{data_type}.csv")
+    return guest_df, user_df_
     
     
 
