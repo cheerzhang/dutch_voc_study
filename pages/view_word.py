@@ -21,25 +21,37 @@ st.markdown(f"Hi {st.session_state.username}, You are currently logged with the 
 #             Page                          #
 #############################################
 if st.session_state.role == 'guest':
-    st.write(f"Current working directory: {os.getcwd()}")
-    file_path = "guest_NOUN.csv"
-
-    if os.path.exists(file_path):
-        st.write(f"{file_path} found.")
+    if os.path.exists("guest_NOUN.csv"):
         df_n = pd.read_csv("guest_NOUN.csv")
-        st.subheader("All Nouns in the Database")
-        st.dataframe(df_n, use_container_width=True)
-        csv_n = df_n.to_csv(index=False).encode('utf-8')
-        st.download_button(
-            label="Download Nouns as CSV",
-            data=csv_n,
-            file_name=f"{st.session_state.username}_NOUN.csv",
-            mime='text/csv',
-        )
     else:
-        st.write(f"{file_path} not found.")
+        df_n = pd.DataFrame(columns=['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
+        df_n.to_csv("guest_NOUN.csv", index=False)
+    st.subheader("All Nouns in the Database")
+    st.dataframe(df_n, use_container_width=True)
+    csv_n = df_n.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="Download Nouns as CSV",
+        data=csv_n,
+        file_name="guest_NOUN.csv",
+        mime='text/csv',
+    )
+
+    if os.path.exists("guest_VERB.csv"):
+        df_v = pd.read_csv("guest_VERB.csv")
+    else:
+        df_v = pd.DataFrame(columns=['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
+        df_v.to_csv("guest_VERB.csv", index=False)
+    st.subheader("All Nouns in the Database")
+    st.dataframe(df_v, use_container_width=True)
+    csv_v = df_v.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="Download Nouns as CSV",
+        data=csv_v,
+        file_name="guest_VERB.csv",
+        mime='text/csv',
+    )
     
-    df_v = pd.read_csv("guest_VERB.csv")
+    # ---------------------------------
     
     
     st.subheader("All Verbs in the Database")
