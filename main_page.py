@@ -70,7 +70,7 @@ def main():
             st.session_state['username'] = 'guest'
             st.session_state['role'] = 'guest'
             st.success("Logged out successfully!")
-            st.experimental_rerun()
+            st.rerun()
 
         st.title("Dutch Vocabulary Learning Tool")
 
@@ -125,13 +125,29 @@ def main():
                 st.error(f"File 'guest_NOUN.csv' not found.")
             if os.path.exists("guest_VERB.csv"):
                 df_guest_v = pd.read_csv("guest_VERB.csv")
-                st.dataframe(df_guest_v, use_container_width=True)
+                if st.session_state['username'] != "guest":
+                    if os.path.exists(f"{st.session_state['username']}_VERB.csv"):
+                        df_admin_v = pd.read_csv(f"{st.session_state['username']}_VERB.csv")
+                        df_guest_v = df_guest_v.merge(
+                            df_admin_v[['verb', 'admin_search_count']],
+                            on='verb', 
+                            how='left', 
+                            suffixes=('', '_y')
+                        )
+                        df_guest_v = df_guest_v[['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
+                        df_guest_v['admin_search_count'] = df_guest_v['admin_search_count'].fillna(0)
+                        df_guest_v[['verb', 'admin_search_count']].to_csv(f"{st.session_state['username']}_VERB.csv", index=False)
+                    else:
+                        df_guest_v = df_guest_v.copy()
+                        df_guest_v['admin_search_count'] = 0
+                        df_guest_v[['verb', 'admin_search_count']].to_csv(f"{st.session_state['username']}_VERB.csv", index=False)
                 # 提供下载功能
+                st.dataframe(df_guest_v, use_container_width=True)
                 csv_guest_v = df_guest_v.to_csv(index=False).encode('utf-8')
                 st.download_button(
                     label="Download verb data as CSV",
                     data=csv_guest_v,
-                    file_name="guest_VERB.csv",
+                    file_name=f"{st.session_state['username']}_VERB.csv",
                     mime='text/csv',
                 )
             else:
