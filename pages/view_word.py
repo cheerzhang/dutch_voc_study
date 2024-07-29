@@ -21,7 +21,7 @@ st.markdown(f"Hi {st.session_state.username}, You are currently logged with the 
 #             Page                          #
 #############################################
 if st.session_state.role == 'guest':
-    df_n = load_guest_data('NOUN')
+    df_n = pd.read_csv(f"guest_NOUN.csv")
     st.dataframe(df_n)
     df_v = load_guest_data('VERB')
     
