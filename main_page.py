@@ -86,6 +86,8 @@ def main():
             st.subheader("Search Functionality")
             st.write("This is the search functionality.")
             # 添加搜索功能的代码
+            
+
         elif choice == "Add" and st.session_state['role'] == 'admin':
             st.subheader("Add Functionality")
             st.write("This is the add functionality.")
