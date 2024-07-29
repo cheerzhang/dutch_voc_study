@@ -85,13 +85,42 @@ def main():
         if choice == "Search":
             st.subheader("Search Functionality")
             st.write("This is the search functionality.")
-            # 添加搜索功能的代码
+            # 添加搜索功能的代码 ---------------------------------------------
+            word = st.text_input("Enter the Dutch word:")
+            if os.path.exists("./.localDB/guest_noun.csv"):
+                df_n = pd.read_csv("./.localDB/guest_noun.csv")
+            if st.session_state['username'] != "guest":
+                if os.path.exists(f"./.localDB/{st.session_state['username']}_noun.csv"):
+                    df_admin_n = pd.read_csv(f"./.localDB/{st.session_state['username']}_noun.csv")
+                    df_guest_n = df_n.merge(
+                        df_admin_n[['word', 'admin_search_count']],
+                        on='word', 
+                        how='left', 
+                        suffixes=('', '_y')
+                    )
+                    df_guest_n = df_guest_n[['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
+                    df_guest_n['admin_search_count'] = df_guest_n['admin_search_count'].fillna(0)
+            search_term_word = word.lower()
+            results = df_n[(df_n['word'].str.lower() == search_term_word) | 
+                (df_n['plural'].str.lower() == search_term_word)]
+            if not results.empty:
+                st.subheader("Word Search Results In Noun")
+                df_n.loc[results.index, 'search_count'] += 1
+                df_n.to_csv(f"./.localDB/guest_noun.csv", index=False)
+                if st.session_state['username'] != "guest":
+                    df_guest_n.loc[results.index, 'admin_search_count'] += 1
+                    df_guest_n[['word', 'admin_search_count']].to_csv(f"./.localDB/{st.session_state['username']}_noun.csv", index=False)
+                    st.dataframe(df_guest_n.loc[results.index], use_container_width=True)
+                else:
+                    st.dataframe(df_n.loc[results.index], use_container_width=True)
+            # 添加搜索功能的代码 ---------------------------------------------
 
 
         elif choice == "Add" and st.session_state['role'] == 'admin':
             st.subheader("Add Functionality")
             st.write("This is the add functionality.")
             # 添加添加单词功能的代码
+       
         elif choice == "View":
             st.subheader("View Functionality")
             st.write("This is the view functionality.")
@@ -158,6 +187,8 @@ def main():
                 df_guest_v = pd.DataFrame(columns=['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
                 df_guest_v.to_csv("./.localDB/guest_verb.csv", index=False)
                 st.error(f"File './.localDB/guest_verb.csv' not found. reflash and try again.")
+            # 添加查看所有单词功能的代码 -------------------------------------------
+
 
 if __name__ == "__main__":
     main()
