@@ -76,7 +76,7 @@ def main():
 
         # 根据角色显示不同的菜单
         if st.session_state['role'] == 'admin':
-            menu = ["Search", "Add Verb", "View"]
+            menu = ["Search", "Add Noun", "Add Verb", "View"]
         else:
             menu = ["Search", "View"]
 
@@ -146,6 +146,41 @@ def main():
                     st.dataframe(df_v.loc[results.index], use_container_width=True)
             # 添加搜索功能的代码 ---------------------------------------------
 
+        
+        elif choice ==  "Add Noun" and st.session_state['role'] == 'admin':
+            st.subheader("Add Noun")
+            st.write("This is the add a new noun.")
+            # 添加添加单词功能的代码 -------------------------------------  
+            if os.path.exists("./.localDB/guest_noun.csv"):
+                df_n = pd.read_csv("./.localDB/guest_noun.csv")
+            word = st.text_input("Noun")
+            plural = st.text_input("Plural")
+            gender = st.selectbox("Gender", ['de', 'het'])
+            translation_en = st.text_input("English Translation")
+            translation_zh = st.text_input("Chinese Translation")
+            difficulty = st.selectbox("Difficulty", ['A1', 'A2', 'B1', 'B2', 'C1'])
+            if st.button("Save this word"):
+                results = df_n[(df_n['word'].str.lower() == word.lower()) | 
+                                (df_n['plural'].str.lower() == plural.lower())]
+                if results.empty:
+                    new_data = pd.DataFrame({
+                        'word': [word],
+                        'plural': [plural],
+                        'gender': [gender],
+                        'translation_en': [translation_en],
+                        'translation_zh': [translation_zh],
+                        'difficulty': [difficulty],
+                        'search_count': [0],
+                    })
+                    df = pd.concat([df_n, new_data], ignore_index=True)
+                    df.to_csv("./.localDB/guest_noun.csv", index=False)
+                    st.success(f"New word {word} added.")
+                else:
+                    st.subheader("Word Search Results In Verb")
+                    df_n.loc[results.index, 'search_count'] += 1
+                    df_n.to_csv(f"./.localDB/guest_noun.csv", index=False)
+                    st.dataframe(df_n.loc[results.index], use_container_width=True)
+        
 
         elif choice == "Add Verb" and st.session_state['role'] == 'admin':
             st.subheader("Add Verb")
@@ -189,6 +224,7 @@ def main():
                     st.subheader("Word Search Results In Verb")
                     df_v.loc[results.index, 'search_count'] += 1
                     df_v.to_csv(f"./.localDB/guest_verb.csv", index=False)
+                    st.dataframe(df_v.loc[results.index], use_container_width=True)
             # 添加添加单词功能的代码 -------------------------------------
        
         elif choice == "View":
@@ -219,7 +255,7 @@ def main():
                 st.download_button(
                     label="Download noun data as CSV",
                     data=csv_guest_n,
-                    file_name=f"./.localDB/{st.session_state['username']}_noun.csv",
+                    file_name=f"{st.session_state['username']}_noun.csv",
                     mime='text/csv',
                 )
             else:
@@ -250,7 +286,7 @@ def main():
                 st.download_button(
                     label="Download verb data as CSV",
                     data=csv_guest_v,
-                    file_name=f"./.localDB/{st.session_state['username']}_verb.csv",
+                    file_name=f"{st.session_state['username']}_verb.csv",
                     mime='text/csv',
                 )
             else:
