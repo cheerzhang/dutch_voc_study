@@ -113,6 +113,37 @@ def main():
                     st.dataframe(df_guest_n.loc[results.index], use_container_width=True)
                 else:
                     st.dataframe(df_n.loc[results.index], use_container_width=True)
+
+            if os.path.exists("./.localDB/guest_verb.csv"):
+                df_v = pd.read_csv("./.localDB/guest_verb.csv")
+            if st.session_state['username'] != "guest":
+                if os.path.exists(f"./.localDB/{st.session_state['username']}_verb.csv"):
+                    df_admin_v = pd.read_csv(f"./.localDB/{st.session_state['username']}_verb.csv")
+                    df_guest_v = df_v.merge(
+                        df_admin_v[['verb', 'admin_search_count']],
+                        on='verb', 
+                        how='left', 
+                        suffixes=('', '_y')
+                    )
+                    df_guest_v = df_guest_v[['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
+                    df_guest_v['admin_search_count'] = df_guest_v['admin_search_count'].fillna(0)
+
+            results = df_v[(df_v['verb'].str.lower() == search_term_word) |
+                (df_v['singular_present'].str.lower() == search_term_word) |
+                (df_v['plural_form'].str.lower() == search_term_word) |
+                (df_v['past_singular'].str.lower() == search_term_word) |
+                (df_v['past_plural'].str.lower() == search_term_word) | 
+                (df_v['perfect_participle'].str.lower() == search_term_word)]
+            if not results.empty:
+                st.subheader("Word Search Results In Verb")
+                df_v.loc[results.index, 'search_count'] += 1
+                df_v.to_csv(f"./.localDB/guest_verb.csv", index=False)
+                if st.session_state['username'] != "guest":
+                    df_guest_v.loc[results.index, 'admin_search_count'] += 1
+                    df_guest_v[['verb', 'admin_search_count']].to_csv(f"./.localDB/{st.session_state['username']}_verb.csv", index=False)
+                    st.dataframe(df_guest_v.loc[results.index], use_container_width=True)
+                else:
+                    st.dataframe(df_v.loc[results.index], use_container_width=True)
             # 添加搜索功能的代码 ---------------------------------------------
 
 
