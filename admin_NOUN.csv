@@ -1,11 +1,11 @@
 word,plural,gender,translation_en,translation_zh,difficulty,search_count,admin_search_count
-foto,foto's,de,photo,照片,A1,4,1
+foto,foto's,de,photo,照片,A1,10,0
 astronaut,astronauten,de,astronaut,宇航员,B1,1,0
 aarde,-,de,earth,地球,A1,4,0
 Boeing Starliner,-,de,Boeing Starliner,波音星际客机,A1,1,0
 wereldtoneel,-,het,world platform,世界舞台,B2,1,0
 Chinees,Chinezen,de,chinese,中国人,A2,0,0
-grip,grips,de,control,控制,B2,1,1
+grip,grips,de,control,控制,B2,1,0
 passage,passages,de,Channel or waterway,通道或航道,B2,1,0
 hulp,hulpen,de,help,帮助,A2,0,0
 zorg,zorgen,de,worry,担忧,A2,0,0

@@ -1,5 +1,5 @@
 word,plural,gender,translation_en,translation_zh,difficulty,search_count
-foto,foto's,de,photo,照片,A1,3
+foto,foto's,de,photo,照片,A1,10
 astronaut,astronauten,de,astronaut,宇航员,B1,1
 aarde,-,de,earth,地球,A1,4
 Boeing Starliner,-,de,Boeing Starliner,波音星际客机,A1,1
@@ -25,3 +25,5 @@ waarde,waarden,de,value,价值,B1,1
 invoerrecht,invoerrechten,de,import duties,进口关税,B2,1
 zending,zendingen,de,shipments,货运,B2,1
 bedrijf,bedrijven,het,company,公司,A2,1
+jachthaven,jachthavens,de,marina,游艇码头,B1,0
+sloep,sloepen,de,sloops,小船,B1,0
