@@ -32,7 +32,7 @@ elif st.session_state.role == 'admin':
         suffixes=('', '_y')
     )
     df_2 = df_2[['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
-    df_2['admin_search_count'].fillna(0, inplace=True)
+    df_2 = df_2['admin_search_count'].fillna(0, inplace=False)
     df_n = df_2.copy()
 
 st.dataframe(df_n, use_container_width=True)
@@ -58,7 +58,7 @@ elif st.session_state.role == 'admin':
         suffixes=('', '_y')
     )
     df_2_ = df_2_[['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
-    df_2_['admin_search_count'].fillna(0, inplace=True)
+    df_2_ = df_2_['admin_search_count'].fillna(0, inplace=False)
     df_v = df_2_.copy()
 st.dataframe(df_v, use_container_width=True)
 csv_v = df_v.to_csv(index=False).encode('utf-8')
