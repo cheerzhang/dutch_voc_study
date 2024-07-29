@@ -93,16 +93,32 @@ def main():
         elif choice == "View":
             st.subheader("View Functionality")
             st.write("This is the view functionality.")
-            # 添加查看所有单词功能的代码
+            # 添加查看所有单词功能的代码 -------------------------------------------
             if os.path.exists("guest_NOUN.csv"):
                 df_guest_n = pd.read_csv("guest_NOUN.csv")
-                st.dataframe(df_guest_n, use_container_width=True)
+                if st.session_state['username'] != "guest":
+                    if os.path.exists(f"{st.session_state['username']}_NOUN.csv"):
+                        df_admin_n = pd.read_csv(f"{st.session_state['username']}_NOUN.csv")
+                        df_guest_n = df_guest_n.merge(
+                            df_admin_n[['word', 'admin_search_count']],
+                            on='word', 
+                            how='left', 
+                            suffixes=('', '_y')
+                        )
+                        df_guest_n = df_guest_n[['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
+                        df_guest_n['admin_search_count'] = df_guest_n['admin_search_count'].fillna(0)
+                        df_guest_n[['word', 'admin_search_count']].to_csv(f"{st.session_state['username']}_NOUN.csv", index=False)
+                    else:
+                        df_guest_n = df_guest_n.copy()
+                        df_guest_n['admin_search_count'] = 0
+                        df_guest_n[['word', 'admin_search_count']].to_csv(f"{st.session_state['username']}_NOUN.csv", index=False)
                 # 提供下载功能
+                st.dataframe(df_guest_n, use_container_width=True)
                 csv_guest_n = df_guest_n.to_csv(index=False).encode('utf-8')
                 st.download_button(
                     label="Download noun data as CSV",
                     data=csv_guest_n,
-                    file_name="guest_NOUN.csv",
+                    file_name=f"{st.session_state['username']}_NOUN.csv",
                     mime='text/csv',
                 )
             else:

@@ -1,27 +1,29 @@
-word,plural,gender,translation_en,translation_zh,difficulty,search_count,admin_search_count
-foto,foto's,de,photo,照片,A1,10,0
-astronaut,astronauten,de,astronaut,宇航员,B1,1,0
-aarde,-,de,earth,地球,A1,4,0
-Boeing Starliner,-,de,Boeing Starliner,波音星际客机,A1,1,0
-wereldtoneel,-,het,world platform,世界舞台,B2,1,0
-Chinees,Chinezen,de,chinese,中国人,A2,0,0
-grip,grips,de,control,控制,B2,1,0
-passage,passages,de,Channel or waterway,通道或航道,B2,1,0
-hulp,hulpen,de,help,帮助,A2,0,0
-zorg,zorgen,de,worry,担忧,A2,0,0
-raketcrisis,raketcrisissen,de,rocket crisis,导弹危机,B2,1,0
-Koude Oorlog,-,de,Cold War,冷战,B1,0,0
-Democraat,Democraten,de,Democrats,民主党人,B1,1,0
-kandidaatschap,kandidaatschappen,het,candidacy,候选资格,B2,1,0
-doorbraak,doorbraken,de,breakthroughs,突破,B2,1,0
-zicht,zichten,het,view,视野，前景,B1,1,0
-wisseling,wisselingen,de,change,转变,B2,0,0
-Belasting,belastingen,de,tax,税,B1,1,0
-Kabinet,kabinetten,het,Cabinet,内阁,B1,1,0
-businessmodel,businessmodellen,het,business model,商业模式,B2,1,0
-prijsvechter,prijsvechters,de,price fighters,价格竞争者,B2,1,0
-vrijstelling,vrijstellingen,de,exemption,免税,B2,1,0
-waarde,waarden,de,value,价值,B1,1,0
-invoerrecht,invoerrechten,de,import duties,进口关税,B2,1,0
-zending,zendingen,de,shipments,货运,B2,1,0
-bedrijf,bedrijven,het,company,公司,A2,1,0
+word,admin_search_count
+foto,0
+astronaut,0
+aarde,0
+Boeing Starliner,0
+wereldtoneel,0
+Chinees,0
+grip,0
+passage,0
+hulp,0
+zorg,0
+raketcrisis,0
+Koude Oorlog,0
+Democraat,0
+kandidaatschap,0
+doorbraak,0
+zicht,0
+wisseling,0
+Belasting,0
+Kabinet,0
+businessmodel,0
+prijsvechter,0
+vrijstelling,0
+waarde,0
+invoerrecht,0
+zending,0
+bedrijf,0
+jachthaven,0
+sloep,0
