@@ -1,0 +1,8 @@
+{
+    "admin": {
+        "password": "0964e974ef82cb613a246de50c20171ec7182c2ad2322d1c2d3f2fc850ccb0d5", 
+        "role": "admin"},
+    "user1": {
+        "password": "0964e974ef82cb613a246de50c20171ec7182c2ad2322d1c2d3f2fc850ccb0d5", 
+        "role": "admin"}
+}
