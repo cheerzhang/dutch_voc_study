@@ -76,7 +76,7 @@ def main():
 
         # 根据角色显示不同的菜单
         if st.session_state['role'] == 'admin':
-            menu = ["Search", "Add", "View"]
+            menu = ["Search", "Add Verb", "View"]
         else:
             menu = ["Search", "View"]
 
@@ -147,10 +147,49 @@ def main():
             # 添加搜索功能的代码 ---------------------------------------------
 
 
-        elif choice == "Add" and st.session_state['role'] == 'admin':
-            st.subheader("Add Functionality")
-            st.write("This is the add functionality.")
-            # 添加添加单词功能的代码
+        elif choice == "Add Verb" and st.session_state['role'] == 'admin':
+            st.subheader("Add Verb")
+            st.write("This is the add a new verb.")
+            # 添加添加单词功能的代码 -------------------------------------
+            if os.path.exists("./.localDB/guest_verb.csv"):
+                df_v = pd.read_csv("./.localDB/guest_verb.csv")
+            verb = st.text_input("Verb")
+            singular_present = st.text_input("singular_present")
+            plural_form = st.text_input("plural_form")
+            past_singular = st.text_input("past_singular")
+            past_plural = st.text_input("past_plural")
+            perfect_participle = st.text_input("perfect_participle")
+            translation_en = st.text_input("English Translation")
+            translation_zh = st.text_input("Chinese Translation")
+            difficulty = st.selectbox("Difficulty", ['A1', 'A2', 'B1', 'B2', 'C1'])
+            if st.button("Save"):
+                results = df_v[(df_v['verb'].str.lower() == verb.lower()) |
+                (df_v['singular_present'].str.lower() == singular_present.lower()) |
+                (df_v['plural_form'].str.lower() == plural_form.lower()) |
+                (df_v['past_singular'].str.lower() == past_singular.lower()) |
+                (df_v['past_plural'].str.lower() == past_plural.lower()) | 
+                (df_v['perfect_participle'].str.lower() == perfect_participle.lower())]
+                if results.empty:
+                    new_data = pd.DataFrame({
+                        'verb': [verb],
+                        'singular_present': [singular_present],
+                        'plural_form': [plural_form],
+                        'past_singular': [past_singular],
+                        'past_plural': [past_plural],
+                        'perfect_participle': [perfect_participle],
+                        'translation_en': [translation_en],
+                        'translation_zh': [translation_zh],
+                        'difficulty': [difficulty],
+                        'search_count': [0]
+                    })
+                    df = pd.concat([df_v, new_data], ignore_index=True)
+                    df.to_csv(f"./.localDB/guest_verb.csv", index=False)
+                    st.success(f"New word {verb} added.")
+                else:
+                    st.subheader("Word Search Results In Verb")
+                    df_v.loc[results.index, 'search_count'] += 1
+                    df_v.to_csv(f"./.localDB/guest_verb.csv", index=False)
+            # 添加添加单词功能的代码 -------------------------------------
        
         elif choice == "View":
             st.subheader("View Functionality")
