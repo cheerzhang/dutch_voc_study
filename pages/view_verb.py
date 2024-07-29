@@ -24,6 +24,7 @@ if st.session_state.role == 'guest':
     if os.path.exists("guest_VERB.csv"):
         st.write("guest_VERB found.")
         df_v = pd.read_csv("guest_VERB.csv")
+        st.write(df_v.shape)
         st.subheader("All Verbs in the Database")
         st.dataframe(df_v, use_container_width=True)
         csv_v = df_v.to_csv(index=False).encode('utf-8')
