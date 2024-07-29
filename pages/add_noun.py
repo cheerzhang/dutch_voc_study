@@ -52,6 +52,18 @@ if st.button("Save"):
             'admin_search_count': [0]
         })
         df = pd.concat([df, new_data], ignore_index=True)
-        df.to_csv(f"{st.session_state.username}_NOUN.csv", index=False)
+        df.to_csv(f"{st.session_state.username}_NOUN.csv", index=False).encode('utf-8')
+        # also saved in normal
+        new_data = pd.DataFrame({
+            'word': [word],
+            'plural': [plural],
+            'gender': [gender],
+            'translation_en': [translation_en],
+            'translation_zh': [translation_zh],
+            'difficulty': [difficulty],
+            'search_count': [0]
+        })
+        df = pd.concat([df, new_data], ignore_index=True)
+        df.to_csv(f"guest_NOUN.csv", index=False).encode('utf-8')
         st.info(f"Word '{word}' added to the database.")
 

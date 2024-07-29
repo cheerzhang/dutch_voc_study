@@ -7,12 +7,12 @@ import os
 def load_data(username, role, data_type='NOUN'):
     if not os.path.exists("guest_NOUN.csv"):
         df = pd.DataFrame(columns=['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count'])
-        df.to_csv("guest_NOUN.csv", index=False)
+        df.to_csv("guest_NOUN.csv", index=False).encode('utf-8')
     if not os.path.exists("guest_VERB.csv"):
         df = pd.DataFrame(columns=['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
-        df.to_csv("guest_VERB.csv", index=False)
+        df.to_csv("guest_VERB.csv", index=False).encode('utf-8')
     if role == 'guest':
-        df = pd.read_csv(f"guest_{data_type}.csv")
+        df = pd.read_csv(f"guest_{data_type}.csv").encode('utf-8')
     elif role == 'admin':
         if not os.path.exists(f"{username}_{data_type}.csv"):
             df = pd.read_csv(f"guest_{data_type}.csv")

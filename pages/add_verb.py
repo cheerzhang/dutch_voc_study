@@ -69,6 +69,21 @@ if st.button("Save"):
         })
         df = pd.concat([df, new_data], ignore_index=True)
         df.to_csv(f"{st.session_state.username}_VERB.csv", index=False)
+        # also saved in normal
+        new_data = pd.DataFrame({
+            'verb': [verb],
+            'singular_present': [singular_present],
+            'plural_form': [plural_form],
+            'past_singular': [past_singular],
+            'past_plural': [past_plural],
+            'perfect_participle': [perfect_participle],
+            'translation_en': [translation_en],
+            'translation_zh': [translation_zh],
+            'difficulty': [difficulty],
+            'search_count': [0]
+        })
+        df = pd.concat([df, new_data], ignore_index=True)
+        df.to_csv(f"guest_VERB.csv", index=False)
         st.write(f"Verb '{verb}' added to the database.")
 
 
