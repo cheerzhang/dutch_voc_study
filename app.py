@@ -1,91 +1,127 @@
 import streamlit as st
+import hashlib
+import json, os
 import pandas as pd
-import sqlite3
 
-# 连接数据库
-def get_connection():
-    conn = sqlite3.connect('dutch_words.db')
-    return conn
+# 示例用户数据
+users = {
+    "admin": {
+        "password": "75836b220eaf45c58c6e030620a6b5853bd1fc1021f7b74ec3150644918a8bd8", 
+        "role": "admin"},
+    "user1": {
+        "password": "75836b220eaf45c58c6e030620a6b5853bd1fc1021f7b74ec3150644918a8bd8", 
+        "role": "admin"}
+}
 
-# 获取所有单词
-def get_words():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM words ORDER BY search_count DESC")
-    words = cursor.fetchall()
-    conn.close()
-    return words
+# 验证用户
+def authenticate_user(username, password):
+    if username in users:
+        stored_password_hash = users[username]['password']
+        password_hash = hashlib.sha256(password.encode()).hexdigest()
+        st.write(password_hash)
+        return stored_password_hash == password_hash
+    return False
 
-# 添加新单词
-def add_word_to_db(word, plural, gender, translation_en, translation_zh, difficulty):
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('''
-    INSERT INTO words (word, plural, gender, translation_en, translation_zh, difficulty)
-    VALUES (?, ?, ?, ?, ?, ?)
-    ''', (word, plural, gender, translation_en, translation_zh, difficulty))
-    conn.commit()
-    conn.close()
+# 登录函数
+def login():
+    st.session_state['authenticated'] = False
+    st.session_state['username'] = 'guest'
+    st.session_state['role'] = 'guest'
 
-# 搜索单词
-def search_word_from_db(word):
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM words WHERE word=?", (word,))
-    result = cursor.fetchone()
-    if result:
-        cursor.execute("UPDATE words SET search_count = search_count + 1 WHERE id=?", (result[0],))
-        conn.commit()
-    conn.close()
-    return result
+    st.title("Login")
 
-# Streamlit 应用
-st.title('Dutch Words Learning Tool')
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
 
-# 添加单词
-st.header('Add a New Word')
-with st.expander("Add a New Word"):
-    with st.form(key='add_word_form'):
-        word = st.text_input('Word')
-        plural = st.text_input('Plural')
-        gender = st.selectbox('Gender', ['de', 'het'])
-        translation_en = st.text_input('English Translation')
-        translation_zh = st.text_input('Chinese Translation')
-        difficulty = st.selectbox('Difficulty', ['A1', 'A2', 'B1', 'B2', 'C1'])
-        submit_add = st.form_submit_button('Add Word')
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Login"):
+            if authenticate_user(username, password):
+                st.session_state['authenticated'] = True
+                st.session_state['username'] = username
+                st.session_state['role'] = users[username]['role']
+                st.success("Logged in successfully!")
+                st.experimental_rerun()
+            else:
+                st.error("Invalid username or password")
+    with col2:
+        if st.button("Continue as Guest"):
+            st.session_state['authenticated'] = True
+            st.session_state['username'] = "guest"
+            st.session_state['role'] = "guest"
+            st.success("Continuing as guest.")
+            st.experimental_rerun()
 
-        if submit_add and word and plural and translation_en and translation_zh:
-            add_word_to_db(word, plural, gender, translation_en, translation_zh, difficulty)
-            st.success(f'Word "{word}" added to the database.')
+# 主应用程序
+def main():
+    # 初始化 session state
+    if 'authenticated' not in st.session_state:
+        st.session_state['authenticated'] = False
+        st.session_state['username'] = 'guest'
+        st.session_state['role'] = 'guest'
 
-# 搜索单词
-st.header('Search for a Word')
-with st.form(key='search_word_form'):
-    search_word = st.text_input('Enter the Dutch word to search')
-    submit_search = st.form_submit_button('Search')
+    # 登录/游客模式选择
+    if not st.session_state['authenticated']:
+        login()
+    else:
+        st.sidebar.title(f"Welcome, {st.session_state['username']}!")
+        if st.sidebar.button("Logout"):
+            st.session_state['authenticated'] = False
+            st.session_state['username'] = 'guest'
+            st.session_state['role'] = 'guest'
+            st.success("Logged out successfully!")
+            st.experimental_rerun()
 
-    if submit_search and search_word:
-        result = search_word_from_db(search_word)
-        if result:
-            st.write(f"**Word:** {result[1]}")
-            st.write(f"**Plural:** {result[2]}")
-            st.write(f"**Gender:** {result[3]}")
-            st.write(f"**English Translation:** {result[4]}")
-            st.write(f"**Chinese Translation:** {result[5]}")
-            st.write(f"**Difficulty:** {result[6]}")
-            st.write(f"**Search Count:** {result[7]}")
+        st.title("Dutch Vocabulary Learning Tool")
+
+        # 根据角色显示不同的菜单
+        if st.session_state['role'] == 'admin':
+            menu = ["Search", "Add", "View"]
         else:
-            st.error(f'Word "{search_word}" not found in the database.')
+            menu = ["Search", "View"]
 
-# 显示所有单词
-st.header('All Words in the Database')
-words = get_words()
+        choice = st.sidebar.radio("Menu", menu)
 
-# 将数据转换为Pandas DataFrame
-df = pd.DataFrame(words, columns=['ID', 'Word', 'Plural', 'Gender', 'English Translation', 'Chinese Translation', 'Difficulty', 'Search Count'])
+        if choice == "Search":
+            st.subheader("Search Functionality")
+            st.write("This is the search functionality.")
+            # 添加搜索功能的代码
+        elif choice == "Add" and st.session_state['role'] == 'admin':
+            st.subheader("Add Functionality")
+            st.write("This is the add functionality.")
+            # 添加添加单词功能的代码
+        elif choice == "View":
+            st.subheader("View Functionality")
+            st.write("This is the view functionality.")
+            # 添加查看所有单词功能的代码
+            if os.path.exists("guest_NOUN.csv"):
+                df_guest_n = pd.read_csv("guest_NOUN.csv")
+                st.dataframe(df_guest_n, use_container_width=True)
+                # 提供下载功能
+                csv_guest_n = df_guest_n.to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="Download noun data as CSV",
+                    data=csv_guest_n,
+                    file_name="guest_NOUN.csv",
+                    mime='text/csv',
+                )
+            else:
+                st.error(f"File 'guest_NOUN.csv' not found.")
+            if os.path.exists("guest_VERB.csv"):
+                df_guest_v = pd.read_csv("guest_VERB.csv")
+                st.dataframe(df_guest_v, use_container_width=True)
+                # 提供下载功能
+                csv_guest_v = df_guest_v.to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="Download verb data as CSV",
+                    data=csv_guest_v,
+                    file_name="guest_VERB.csv",
+                    mime='text/csv',
+                )
+            else:
+                st.error(f"File 'guest_VERB.csv' not found.")
 
-if not df.empty:
-    # 使用st.dataframe显示DataFrame
-    st.dataframe(df.drop(columns=['ID']), width=800, height=400)
-else:
-    st.write('No words in the database.')
+if __name__ == "__main__":
+    main()
+
+
