@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from utils.words_action import load_guest_data, load_user_data
 from menu import menu_with_redirect
 import os
 
