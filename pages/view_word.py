@@ -17,6 +17,11 @@ st.markdown(f"Hi {st.session_state.username}, You are currently logged with the 
 
 
 
+
+if "role" not in st.session_state:
+    st.session_state.role = "guest"
+if "username" not in st.session_state:
+    st.session_state.username = "guest"
 #############################################
 #             Page                          #
 #############################################
