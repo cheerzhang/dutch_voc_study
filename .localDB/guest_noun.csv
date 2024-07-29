@@ -26,4 +26,6 @@ invoerrecht,invoerrechten,de,import duties,进口关税,B2,1
 zending,zendingen,de,shipments,货运,B2,1
 bedrijf,bedrijven,het,company,公司,A2,1
 jachthaven,jachthavens,de,marina,游艇码头,B1,0
-sloep,sloepen,de,sloops,小船,B1,0
+sloep,sloepen,de,sloops,小船,B1,1
+plek,plekken,de,place,位置,A2,0
+kosten,kosten,de,cost,成本,B1,0
