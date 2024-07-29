@@ -43,12 +43,11 @@ if st.button("Search"):
                  (df_n['plural'].str.lower() == search_term_word)]
     if not results.empty:
         st.subheader("Word Search Results In Noun")
-        # st.dataframe(results, use_container_width=True)
         df_n.loc[results.index, 'search_count'] += 1
-        df_n.to_csv(f"guest_NOUN.csv", index=False)
+        df_n.to_csv(f"./.localDB/guest_NOUN.csv", index=False)
         if st.session_state.role == 'admin':
             df_n_user.loc[results.index, 'admin_search_count'] += 1
-            df_n_user.to_csv(f"{st.session_state.username}_NOUN.csv", index=False)
+            df_n_user.to_csv(f"./.localDB/{st.session_state.username}_NOUN.csv", index=False)
             st.dataframe(df_n_user.loc[results.index], use_container_width=True)
         if st.session_state.role == 'guest':
             st.dataframe(df_n.loc[results.index], use_container_width=True)
