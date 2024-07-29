@@ -20,28 +20,27 @@ st.markdown(f"Hi {st.session_state.username}, You are currently logged with the 
 #############################################
 #             Page                          #
 #############################################
-NOUN_CSV_USER = f"{st.session_state.username}_Noun.csv"
-VERB_CSV_USER = f"{st.session_state.username}_Verb.csv"
+
 
 st.subheader("All Nouns in the Database")
-df_n = load_data(NOUN_CSV_USER, st.session_state.role, 'NOUN')
+df_n = load_data(st.session_state.username, st.session_state.role, 'NOUN')
 st.dataframe(df_n, use_container_width=True)
 csv_n = df_n.to_csv(index=False).encode('utf-8')
 st.download_button(
     label="Download Nouns as CSV",
     data=csv_n,
-    file_name=NOUN_CSV_USER,
+    file_name=f"{st.session_state.username}_NOUN.csv",
     mime='text/csv',
 )
 
 st.subheader("All Verbs in the Database")
-df_v = load_data(VERB_CSV_USER, st.session_state.role, 'VERB')
+df_v = load_data(st.session_state.username, st.session_state.role, 'VERB')
 st.dataframe(df_v, use_container_width=True)
 csv_v = df_v.to_csv(index=False).encode('utf-8')
 st.download_button(
-    label="Download Nouns as CSV",
+    label="Download Verbs as CSV",
     data=csv_v,
-    file_name=VERB_CSV_USER,
+    file_name=f"{st.session_state.username}_VERB.csv",
     mime='text/csv',
 )
 

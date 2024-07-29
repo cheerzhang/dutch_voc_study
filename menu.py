@@ -3,7 +3,7 @@ import streamlit as st
 
 def authenticated_menu():
     # Show a navigation menu for authenticated users
-    st.sidebar.page_link("test.py", label="LogIn Page")
+    st.sidebar.page_link("main_page.py", label="LogIn Page")
     if st.session_state.role in ["admin", "guest"]:
         st.sidebar.page_link("pages/add_noun.py", label="[Noun]Add", disabled=st.session_state.role not in ["admin"])
         st.sidebar.page_link("pages/add_verb.py", label="[Verb]Add", disabled=st.session_state.role not in ["admin"])
@@ -12,7 +12,7 @@ def authenticated_menu():
         
 
 def unauthenticated_menu():
-    st.sidebar.page_link("test.py", label="Log in")
+    st.sidebar.page_link("main_page.py", label="Log in")
 
 
 def menu():
@@ -24,6 +24,6 @@ def menu():
 
 def menu_with_redirect():
     if "role" not in st.session_state or st.session_state.role is None:
-        st.switch_page("test.py")
+        st.switch_page("main_page.py")
     menu()
         
