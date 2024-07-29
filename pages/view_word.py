@@ -35,36 +35,16 @@ if st.session_state.role == 'guest':
         file_name="guest_NOUN.csv",
         mime='text/csv',
     )
-
-    if os.path.exists("guest_VERB.csv"):
-        st.write("guest_VERB found.")
-        df_v = pd.read_csv("guest_VERB.csv")
-        st.dataframe(df_v, use_container_width=True)
-    else:
-        df_v = pd.DataFrame(columns=['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
-        df_v.to_csv("guest_VERB.csv", index=False)
-    st.subheader("All Verbs in the Database")
-    csv_v = df_v.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Download Verb as CSV",
-        data=csv_v,
-        file_name="guest_VERB.csv",
-        mime='text/csv',
-    )
-    
     # ---------------------------------
-    
-    
-    st.subheader("All Verbs in the Database")
-    st.dataframe(df_v, use_container_width=True)
-    csv_v = df_v.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Download Verbs as CSV",
-        data=csv_v,
-        file_name=f"{st.session_state.username}_VERB.csv",
-        mime='text/csv',
-    )
 elif st.session_state.role == 'admin':
+    if os.path.exists("guest_NOUN.csv"):
+        df_1 = pd.read_csv("guest_NOUN.csv")
+    else:
+        df_1 = pd.DataFrame(columns=['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
+        df_1.to_csv("guest_NOUN.csv", index=False)
+
+    if os.path.exists(f"{}_NOUN.csv"):
+
     df_1, df_2 = load_user_data(st.session_state.username, 'NOUN')
     df_2 = df_1.merge(
         df_2[['word', 'admin_search_count']], 
