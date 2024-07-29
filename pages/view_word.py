@@ -39,11 +39,11 @@ if st.session_state.role == 'guest':
     if os.path.exists("guest_VERB.csv"):
         st.write("guest_VERB found.")
         df_v = pd.read_csv("guest_VERB.csv")
+        st.dataframe(df_v, use_container_width=True)
     else:
         df_v = pd.DataFrame(columns=['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
         df_v.to_csv("guest_VERB.csv", index=False)
     st.subheader("All Verbs in the Database")
-    st.dataframe(df_v, use_container_width=True)
     csv_v = df_v.to_csv(index=False).encode('utf-8')
     st.download_button(
         label="Download Verb as CSV",
