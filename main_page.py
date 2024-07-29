@@ -96,11 +96,11 @@ def main():
             st.subheader("View Functionality")
             st.write("This is the view functionality.")
             # 添加查看所有单词功能的代码 -------------------------------------------
-            if os.path.exists("guest_NOUN.csv"):
-                df_guest_n = pd.read_csv("guest_NOUN.csv")
+            if os.path.exists("./.localDB/guest_noun.csv"):
+                df_guest_n = pd.read_csv("./.localDB/guest_noun.csv")
                 if st.session_state['username'] != "guest":
-                    if os.path.exists(f"{st.session_state['username']}_NOUN.csv"):
-                        df_admin_n = pd.read_csv(f"{st.session_state['username']}_NOUN.csv")
+                    if os.path.exists(f"./.localDB/{st.session_state['username']}_noun.csv"):
+                        df_admin_n = pd.read_csv(f"./.localDB/{st.session_state['username']}_noun.csv")
                         df_guest_n = df_guest_n.merge(
                             df_admin_n[['word', 'admin_search_count']],
                             on='word', 
@@ -109,27 +109,29 @@ def main():
                         )
                         df_guest_n = df_guest_n[['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
                         df_guest_n['admin_search_count'] = df_guest_n['admin_search_count'].fillna(0)
-                        df_guest_n[['word', 'admin_search_count']].to_csv(f"{st.session_state['username']}_NOUN.csv", index=False)
+                        df_guest_n[['word', 'admin_search_count']].to_csv(f"./.localDB/{st.session_state['username']}_noun.csv", index=False)
                     else:
                         df_guest_n = df_guest_n.copy()
                         df_guest_n['admin_search_count'] = 0
-                        df_guest_n[['word', 'admin_search_count']].to_csv(f"{st.session_state['username']}_NOUN.csv", index=False)
+                        df_guest_n[['word', 'admin_search_count']].to_csv(f"./.localDB/{st.session_state['username']}_noun.csv", index=False)
                 # 提供下载功能
                 st.dataframe(df_guest_n, use_container_width=True)
                 csv_guest_n = df_guest_n.to_csv(index=False).encode('utf-8')
                 st.download_button(
                     label="Download noun data as CSV",
                     data=csv_guest_n,
-                    file_name=f"{st.session_state['username']}_NOUN.csv",
+                    file_name=f"./.localDB/{st.session_state['username']}_noun.csv",
                     mime='text/csv',
                 )
             else:
-                st.error(f"File 'guest_NOUN.csv' not found.")
-            if os.path.exists("guest_VERB.csv"):
-                df_guest_v = pd.read_csv("guest_VERB.csv")
+                df_guest_n = pd.DataFrame(columns=['word', 'plural', 'gender', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count'])
+                df_guest_n.to_csv("./.localDB/guest_noun.csv", index=False)
+                st.error(f"File './.localDB/guest_noun.csv' not found.")
+            if os.path.exists("./.localDB/guest_verb.csv"):
+                df_guest_v = pd.read_csv("./.localDB/guest_verb.csv")
                 if st.session_state['username'] != "guest":
-                    if os.path.exists(f"{st.session_state['username']}_VERB.csv"):
-                        df_admin_v = pd.read_csv(f"{st.session_state['username']}_VERB.csv")
+                    if os.path.exists(f"./.localDB/{st.session_state['username']}_verb.csv"):
+                        df_admin_v = pd.read_csv(f"./.localDB/{st.session_state['username']}_verb.csv")
                         df_guest_v = df_guest_v.merge(
                             df_admin_v[['verb', 'admin_search_count']],
                             on='verb', 
@@ -138,22 +140,24 @@ def main():
                         )
                         df_guest_v = df_guest_v[['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
                         df_guest_v['admin_search_count'] = df_guest_v['admin_search_count'].fillna(0)
-                        df_guest_v[['verb', 'admin_search_count']].to_csv(f"{st.session_state['username']}_VERB.csv", index=False)
+                        df_guest_v[['verb', 'admin_search_count']].to_csv(f"./.localDB/{st.session_state['username']}_verb.csv", index=False)
                     else:
                         df_guest_v = df_guest_v.copy()
                         df_guest_v['admin_search_count'] = 0
-                        df_guest_v[['verb', 'admin_search_count']].to_csv(f"{st.session_state['username']}_VERB.csv", index=False)
+                        df_guest_v[['verb', 'admin_search_count']].to_csv(f"./.localDB/{st.session_state['username']}_verb.csv", index=False)
                 # 提供下载功能
                 st.dataframe(df_guest_v, use_container_width=True)
                 csv_guest_v = df_guest_v.to_csv(index=False).encode('utf-8')
                 st.download_button(
                     label="Download verb data as CSV",
                     data=csv_guest_v,
-                    file_name=f"{st.session_state['username']}_VERB.csv",
+                    file_name=f"./.localDB/{st.session_state['username']}_verb.csv",
                     mime='text/csv',
                 )
             else:
-                st.error(f"File 'guest_VERB.csv' not found.")
+                df_guest_v = pd.DataFrame(columns=['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count'])
+                df_guest_v.to_csv("./.localDB/guest_verb.csv", index=False)
+                st.error(f"File './.localDB/guest_verb.csv' not found. reflash and try again.")
 
 if __name__ == "__main__":
     main()
