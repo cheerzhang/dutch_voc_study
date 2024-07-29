@@ -30,7 +30,7 @@ if st.session_state.role == 'guest':
     st.dataframe(df_n, use_container_width=True)
     csv_n = df_n.to_csv(index=False).encode('utf-8')
     st.download_button(
-        label="Download Nouns as CSV",
+        label="Download Noun as CSV",
         data=csv_n,
         file_name="guest_NOUN.csv",
         mime='text/csv',
@@ -46,7 +46,7 @@ if st.session_state.role == 'guest':
     st.dataframe(df_v, use_container_width=True)
     csv_v = df_v.to_csv(index=False).encode('utf-8')
     st.download_button(
-        label="Download Verbs as CSV",
+        label="Download Verb as CSV",
         data=csv_v,
         file_name="guest_VERB.csv",
         mime='text/csv',
