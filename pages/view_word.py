@@ -27,10 +27,10 @@ if st.session_state.role == 'guest':
     if os.path.exists(file_path):
         st.write(f"{file_path} found.")
         df_n = pd.read_csv("guest_NOUN.csv")
-        df_v = pd.read_csv("guest_VERB.csv")
     else:
         st.write(f"{file_path} not found.")
     
+    df_v = pd.read_csv("guest_VERB.csv")
     st.subheader("All Nouns in the Database")
     st.dataframe(df_n, use_container_width=True)
     csv_n = df_n.to_csv(index=False).encode('utf-8')
