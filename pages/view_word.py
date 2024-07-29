@@ -22,6 +22,7 @@ st.markdown(f"Hi {st.session_state.username}, You are currently logged with the 
 #############################################
 if st.session_state.role == 'guest':
     df_n = load_guest_data('NOUN')
+    st.dataframe(df_n)
     df_v = load_guest_data('VERB')
     
     st.subheader("All Nouns in the Database")
