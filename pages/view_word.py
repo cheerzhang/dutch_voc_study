@@ -50,16 +50,16 @@ st.subheader("All Verbs in the Database")
 if st.session_state.role == 'guest':
     df_v = load_guest_data('VERB')
 elif st.session_state.role == 'admin':
-    df_1, df_2 = load_user_data(st.session_state.username, 'VERB')
-    df_2 = df_1.merge(
-        df_2[['verb', 'admin_search_count']], 
+    df_1_, df_2_ = load_user_data(st.session_state.username, 'VERB')
+    df_2_ = df_1_.merge(
+        df_2_[['verb', 'admin_search_count']], 
         on='verb', 
         how='left', 
         suffixes=('', '_y')
     )
-    df_2 = df_2[['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
-    df_2['admin_search_count'].fillna(0, inplace=True)
-    df_v = df_2.copy()
+    df_2_ = df_2_[['verb', 'singular_present', 'plural_form', 'past_singular', 'past_plural', 'perfect_participle', 'translation_en', 'translation_zh', 'difficulty', 'search_count', 'admin_search_count']]
+    df_2_['admin_search_count'].fillna(0, inplace=True)
+    df_v = df_2_.copy()
 st.dataframe(df_v, use_container_width=True)
 csv_v = df_v.to_csv(index=False).encode('utf-8')
 st.download_button(
