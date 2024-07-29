@@ -41,7 +41,7 @@ def login():
                 st.session_state['username'] = username
                 st.session_state['role'] = users[username]['role']
                 st.success("Logged in successfully!")
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Invalid username or password")
     with col2:
@@ -50,7 +50,7 @@ def login():
             st.session_state['username'] = "guest"
             st.session_state['role'] = "guest"
             st.success("Continuing as guest.")
-            st.experimental_rerun()
+            st.rerun()
 
 # 主应用程序
 def main():
@@ -86,7 +86,7 @@ def main():
             st.subheader("Search Functionality")
             st.write("This is the search functionality.")
             # 添加搜索功能的代码
-            
+
 
         elif choice == "Add" and st.session_state['role'] == 'admin':
             st.subheader("Add Functionality")
