@@ -8,7 +8,8 @@ def authenticated_menu():
         st.sidebar.page_link("pages/add_noun.py", label="[Noun]Add", disabled=st.session_state.role not in ["admin"])
         st.sidebar.page_link("pages/add_verb.py", label="[Verb]Add", disabled=st.session_state.role not in ["admin"])
         st.sidebar.page_link("pages/search_word.py", label="[Noun+Verb]Search", disabled=st.session_state.role not in ["admin", "guest"])
-        st.sidebar.page_link("pages/view_word.py", label="[Noun+Verb]View All", disabled=st.session_state.role not in ["admin", "guest"])
+        st.sidebar.page_link("pages/view_word.py", label="[Noun]View All", disabled=st.session_state.role not in ["admin", "guest"])
+        st.sidebar.page_link("pages/view_verb.py", label="[Noun]View All", disabled=st.session_state.role not in ["admin", "guest"])
         
 
 def unauthenticated_menu():
