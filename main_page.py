@@ -113,6 +113,8 @@ def main():
                     st.dataframe(df_guest_n.loc[results.index], use_container_width=True)
                 else:
                     st.dataframe(df_n.loc[results.index], use_container_width=True)
+            else:
+                st.info("Not found in the noun table.")
 
             if os.path.exists("./.localDB/guest_verb.csv"):
                 df_v = pd.read_csv("./.localDB/guest_verb.csv")
@@ -144,6 +146,9 @@ def main():
                     st.dataframe(df_guest_v.loc[results.index], use_container_width=True)
                 else:
                     st.dataframe(df_v.loc[results.index], use_container_width=True)
+            else:
+                st.info("Not found in the verb table.")
+
             # 添加搜索功能的代码 ---------------------------------------------
 
         
