@@ -21,8 +21,15 @@ st.markdown(f"Hi {st.session_state.username}, You are currently logged with the 
 #             Page                          #
 #############################################
 if st.session_state.role == 'guest':
-    df_n = pd.read_csv(f"guest_NOUN.csv")
-    df_v = pd.read_csv(f"guest_VERB.csv")
+    st.write(f"Current working directory: {os.getcwd()}")
+    file_path = "guest_NOUN.csv"
+
+    if os.path.exists(file_path):
+        st.write(f"{file_path} found.")
+    else:
+        st.write(f"{file_path} not found.")
+    df_n = pd.read_csv("guest_NOUN.csv")
+    df_v = pd.read_csv("guest_VERB.csv")
     
     st.subheader("All Nouns in the Database")
     st.dataframe(df_n, use_container_width=True)
