@@ -6,13 +6,6 @@ import os
 #####################################################
 #             Page Control                          #
 #####################################################
-st.set_option("client.showSidebarNavigation", False)
-menu_with_redirect()
-if st.session_state.role not in ["admin", "guest"]:
-    st.warning("You do not have permission to view this page. This function is only for registed user.")
-    st.stop()
-st.title("View All Noun or Verb Words.")
-st.markdown(f"Hi {st.session_state.username}, You are currently logged with the role of {st.session_state.role}.")
 
 
 
@@ -62,6 +55,14 @@ def display_data_page():
 #####################################################
 
 def main():
+    st.set_option("client.showSidebarNavigation", False)
+    menu_with_redirect()
+    if st.session_state.role not in ["admin", "guest"]:
+        st.warning("You do not have permission to view this page. This function is only for registed user.")
+        st.stop()
+    st.title("View All Noun or Verb Words.")
+    st.markdown(f"Hi {st.session_state.username}, You are currently logged with the role of {st.session_state.role}.")
+
     df_v = display_data_page()
     st.subheader("All Verbs in the Database")
     st.dataframe(df_v, use_container_width=True)
