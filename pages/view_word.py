@@ -51,6 +51,7 @@ if st.session_state.role == 'guest':
     df_v = load_guest_data('VERB')
 elif st.session_state.role == 'admin':
     df_1_, df_2_ = load_user_data(st.session_state.username, 'VERB')
+    st.dataframe(df_2_)
     df_2_ = df_1_.merge(
         df_2_[['verb', 'admin_search_count']], 
         on='verb', 
