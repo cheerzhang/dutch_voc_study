@@ -2,6 +2,17 @@
 
 This is a Streamlit application designed to help users learn Dutch vocabulary. The application allows users to search, add, and view Dutch nouns and verbs, along with their English translations, difficulty levels, and more. All data is stored and updated in CSV files hosted on GitHub.
 
+## How to Access the Application
+
+The application is hosted on Streamlit Cloud. You can access it via the following link:
+
+[**Dutch Vocabulary Learning Tool on Streamlit**](https://dutchvocstudy.streamlit.app/)
+
+
+## Registration and Feedback
+To gain registered user access, please contact the developer. We welcome feedback and suggestions to make this tool more helpful, especially for beginners learning Dutch.  
+
+
 ## Features
 
 - ### Search Nouns and Verbs
@@ -9,16 +20,22 @@ This is a Streamlit application designed to help users learn Dutch vocabulary. T
 
 - ### Add New Entries
   Add new nouns and verbs to the database with details like plural forms, translations, and difficulty levels.
+  *Only registered users can add new nouns and verbs*
 
 - ### View All Entries
   View all the nouns and verbs stored in the database.
 
+## User Permissions
+- *Registered Users*: Can add new nouns and verbs to the database.   
+- *Guests*: Can search and download all data available in the database.   
 
-## How to Access the Application
+## Vocabulary Details
+*Nouns*: Includes information on singular and plural forms, definite articles (de/het), English translations, and difficulty levels (A1-C).   
+*Verbs*: Includes present tense, past tense, perfect tense, third-person singular usage, English translations, and difficulty levels (A1-C).   
 
-The application is hosted on Streamlit Cloud. You can access it via the following link:
+## Source of Vocabulary
+All vocabulary words are sourced from daily Dutch news reports. This ensures that the vocabulary is relevant and reflects topics of interest in Dutch society. This helps learners acquire more commonly used words and stay updated with news in the Netherlands, Europe, and around the world.   
 
-[**Dutch Vocabulary Learning Tool on Streamlit**](https://dutchvocstudy.streamlit.app/)
 
 
 ## GitHub Integration
