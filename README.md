@@ -37,7 +37,7 @@ All vocabulary words are sourced from daily Dutch news reports. This ensures tha
 
 ## Registration and Feedback
 To gain registered user access, please contact the developer. We welcome feedback and suggestions to make this tool more helpful, especially for beginners learning Dutch.  
-
+For any questions or issues, please contact the repository owner.
 
 
 ## GitHub Integration
@@ -63,6 +63,3 @@ Feel free to fork the repository and submit pull requests. Please ensure that yo
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
-
-For any questions or issues, please contact the repository owner.
