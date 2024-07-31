@@ -24,8 +24,11 @@ The application is hosted on Streamlit Cloud. You can access it via the followin
 
 
 ## Vocabulary Details
-**Nouns**: Includes information on singular and plural forms, definite articles (de/het), English translations, and difficulty levels (A1-C).   
-**Verbs**: Includes present tense, past tense, perfect tense, third-person singular usage, English translations, and difficulty levels (A1-C).   
+  - ### Nouns
+  Includes information on singular and plural forms, definite articles (de/het), English translations, and difficulty levels (A1-C).   
+
+  - ### Verbs
+  Includes present tense, past tense, perfect tense, third-person singular usage, English translations, and difficulty levels (A1-C).   
 
 ## Source of Vocabulary
 All vocabulary words are sourced from daily Dutch news reports. This ensures that the vocabulary is relevant and reflects topics of interest in Dutch society. This helps learners acquire more commonly used words and stay updated with news in the Netherlands, Europe, and around the world.   
