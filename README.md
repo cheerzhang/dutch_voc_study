@@ -24,16 +24,16 @@ The application is hosted on Streamlit Cloud. You can access it via the followin
 
 
 ## Vocabulary Details
-*Nouns*: Includes information on singular and plural forms, definite articles (de/het), English translations, and difficulty levels (A1-C).   
-*Verbs*: Includes present tense, past tense, perfect tense, third-person singular usage, English translations, and difficulty levels (A1-C).   
+**Nouns**: Includes information on singular and plural forms, definite articles (de/het), English translations, and difficulty levels (A1-C).   
+**Verbs**: Includes present tense, past tense, perfect tense, third-person singular usage, English translations, and difficulty levels (A1-C).   
 
 ## Source of Vocabulary
 All vocabulary words are sourced from daily Dutch news reports. This ensures that the vocabulary is relevant and reflects topics of interest in Dutch society. This helps learners acquire more commonly used words and stay updated with news in the Netherlands, Europe, and around the world.   
 
 
 ## User Permissions
-- *Registered Users*: Can add new nouns and verbs to the database.   
-- *Guests*: Can search and download all data available in the database.   
+- **Registered Users**: Can add new nouns and verbs to the database.   
+- **Guests**: Can search and download all data available in the database.   
 
 ## Registration and Feedback
 To gain registered user access, please contact the developer. We welcome feedback and suggestions to make this tool more helpful, especially for beginners learning Dutch.  
