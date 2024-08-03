@@ -1,5 +1,5 @@
 word,plural,gender,translation_en,translation_zh,difficulty,search_count
-foto,foto's,de,photo,照片,A1,17
+foto,foto's,de,photo,照片,A1,18
 astronaut,astronauten,de,astronaut,宇航员,B1,1
 aarde,-,de,earth,地球,A1,5
 Boeing Starliner,-,de,Boeing Starliner,波音星际客机,A1,2
@@ -8,7 +8,7 @@ Chinees,Chinezen,de,chinese,中国人,A2,0
 grip,grips,de,control,控制,B2,1
 passage,passages,de,Channel or waterway,通道或航道,B2,1
 hulp,hulpen,de,help,帮助,A2,0
-zorg,zorgen,de,worry,担忧,A2,0
+zorg,zorgen,de,worry,担忧,A2,2
 raketcrisis,raketcrisissen,de,rocket crisis,导弹危机,B2,1
 Koude Oorlog,-,de,Cold War,冷战,B1,1
 Democraat,Democraten,de,Democrats,民主党人,B1,1
@@ -56,3 +56,10 @@ tegenstand,tegenstanden,de,oppositions,反对派,B1,0
 inzet,inzetten,de,invest,使用，应用，投入,A1,0
 beoordeling,beoordelingen,de,review,评价,B1,0
 inlevering,inleveringen,de,return,交还,B1,0
+aankoop,aankopen,de,purchase,购买,A1,0
+verzending,verzendingen,de,shipping,发货,B1,1
+wolfspoot,wolfspoten,de,Gypsywort,欧地笋,B2,0
+bloemkransje,bloemkransjes,het,small flower wreaths,小花环,B1,0
+rups,rupsen,de,caterpillars,毛虫,A1,0
+pauwoogpijlstaart,pauwoogpijlstaarten,de,Peacock moth,孔雀蛾,C1,0
+roodoogjuffer,roodoogjuffers,de,red-eyed damselfly,红眼蜻蜓,B2,0

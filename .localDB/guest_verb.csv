@@ -9,7 +9,7 @@ varen,vaart,varen,voer,voeren,gevaren,A2,0,sail,航行
 regelen,regelt,regelen,regelde,regelden,geregeld,A2,0,arrange,安排
 meegaan,gaat mee,gaan mee,ging mee,gingen mee,is meegegaan,A2,0,join,加入
 bereiden,bereidt,bereiden,bereidde,bereidden,bereid,A2,0,prepare,准备
-bloeien,bloeit,bloeien,bloeide,bloeiden,gebloeid,A2,0,bloom,开花
+bloeien,bloeit,bloeien,bloeide,bloeiden,gebloeid,A2,1,bloom,开花
 groeien,groeit,groeien,groeide,groeiden,gegroeid,A2,0,grow,生长
 introduceren,introduceert,introduceren,introduceerde,introduceerden,geïntroduceerd,B1,0,introduce,介绍
 bekendmaken,maakt bekend,maken bekend,maakte bekend,maakten bekend,bekendgemaakt,B1,0,announce,公布
@@ -20,3 +20,6 @@ bezorgen,bezorgt,bezorgen,bezorgde,bezorgden,bezorgd,A2,0,delivery,递送
 krijgen,krijgt,krijgen,kreeg,kregen,gekregen,A2,0,get,获得
 profiteren,profiteert,profiteren,profiteerde,profiteerden,geprofiteerd,B1,0,Benefits,受益
 tegemoetzien, zien tegemoet,zien tegemoet,zag tegemoet,zagen tegemoet,heeft tegemoetgezien,B1,0,looking forward,期待
+stellen,stelt,stellen,stelde,stelden,gesteld,B1,0,to inform,通知
+verzenden,verzendt,verzenden,verzond,verzonden,verzonden,B1,0,to send,发送
+volgeten,volgeten,volgeten,voldeed,voldeed,volgegeten,B2,0,eaten full,吃饱
