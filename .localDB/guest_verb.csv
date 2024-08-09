@@ -1,6 +1,6 @@
 verb,singular_present,plural_form,past_singular,past_plural,perfect_participle,difficulty,search_count,translation_en,translation_zh
 zit,zit,zitten,zat,zaten,zeten,A2,7,face,面临
-houden,houdt,houden,hield,hielden,gehouden,A2,0,take place,举行
+houd,houdt,houden,hield,hielden,gehouden,A2,5,take place,举行
 versterken,versterkt,versterken,versterkte,versterkten,versterkt,B1,0,enhance,加强
 waarschuwen,waarschuwt,waarschuwen,waarschuwde,waarschuwden,gewaarschuwd,A2,0,warn,警告
 belasten,belast,belasten,belastte,belastten,belast,B1,0,tax,收税
@@ -8,7 +8,7 @@ leunen,leunt,leunen,leunde,leunden,geleund,B2,0,to lean,依靠
 varen,vaart,varen,voer,voeren,gevaren,A2,0,sail,航行
 regelen,regelt,regelen,regelde,regelden,geregeld,A2,0,arrange,安排
 meegaan,gaat mee,gaan mee,ging mee,gingen mee,is meegegaan,A2,0,join,加入
-bereiden,bereidt,bereiden,bereidde,bereidden,bereid,A2,0,prepare,准备
+bereiden,bereidt,bereiden,bereidde,bereidden,bereid,B1,1,prepare,准备
 bloeien,bloeit,bloeien,bloeide,bloeiden,gebloeid,A2,1,bloom,开花
 groeien,groeit,groeien,groeide,groeiden,gegroeid,A2,0,grow,生长
 introduceren,introduceert,introduceren,introduceerde,introduceerden,geïntroduceerd,B1,0,introduce,介绍
@@ -29,3 +29,4 @@ melden,meldt,melden,meldde,meldden,gemeld,A2,0,"to report, to announce",报告�
 blijven,blijft,blijven,bleef,bleven,gebleven,A2,0,"to remain, to keep",保持，继续
 stijgen,stijgt,stijgen,steeg,stegen,gestegen,A2,0,"to rise, to increase",上升，增加
 slaan,slaat,slaan,sloeg,sloegen,geslagen,B1,0,"to strike, to raise (alert), to sound",发出（警报），敲打
+zouden,zou,zouden,zou,zou,zou,A2,0,would,会，应该
