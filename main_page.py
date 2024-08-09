@@ -52,6 +52,32 @@ def login():
             st.success("Continuing as guest.")
             st.rerun()
 
+def search_word(word):
+    if os.path.exists("./.localDB/guest_noun.csv"):
+        df_n = pd.read_csv("./.localDB/guest_noun.csv")
+    search_term_word = word.lower()
+    results = df_n[(df_n['word'].str.lower() == search_term_word) | 
+                (df_n['plural'].str.lower() == search_term_word)]
+    if not results.empty:
+        english = results['translation_en'].values[0]
+        chinese = results['translation_zh'].values[0]
+        return english, chinese
+    if os.path.exists("./.localDB/guest_verb.csv"):
+        df_v = pd.read_csv("./.localDB/guest_verb.csv")
+    results = df_v[(df_v['verb'].str.lower() == search_term_word) |
+                (df_v['singular_present'].str.lower() == search_term_word) |
+                (df_v['plural_form'].str.lower() == search_term_word) |
+                (df_v['past_singular'].str.lower() == search_term_word) |
+                (df_v['past_plural'].str.lower() == search_term_word) | 
+                (df_v['perfect_participle'].str.lower() == search_term_word)]
+    if not results.empty:
+        english = results['translation_en'].values[0]
+        chinese = results['translation_zh'].values[0]
+        return english, chinese
+    return None, None
+
+
+
 # 主应用程序
 def main():
     # 初始化 session state
@@ -84,6 +110,32 @@ def main():
 
         if choice == "Search":
             st.subheader("Search Functionality")
+            # 添加输入框来粘贴整段文字
+            text_input = st.text_area("Paste your Dutch text here:")
+            if st.button("Analyze"):
+                if text_input:
+                    # 处理输入的文字，将其分割成单词
+                    words = text_input.split()  # 可以根据需求改进分词逻辑，比如去除标点符号
+                    no_translate_df = pd.read_csv("./.localDB/no_translation.csv")
+                    no_translate_words = set(no_translate_df['word'].str.lower())  # 转为小写以进行匹配
+                    # 去掉不需要翻译的单词
+                    filtered_words = [word for word in words if word.lower() not in no_translate_words]
+                    # 搜索剩下的单词并显示结果
+                    results = []
+                    results_zh = []
+                    results_en = []
+                    for word in filtered_words:
+                        punctuations = ",.?!;:()[]{}\"'‘’"
+                        word = word.strip(punctuations)
+                        translation_en, translation_zh = search_word(word)
+                        results_zh.append(translation_zh)
+                        results_en.append(translation_en)
+                        results.append(word)
+                    st.dataframe(pd.DataFrame({
+                        'word': results,
+                        'translate_zh': results_zh,
+                        'results_en': results_en
+                    }), use_container_width=True)
             st.write("This is the search functionality.")
             # 添加搜索功能的代码 ---------------------------------------------
             word = st.text_input("Enter the Dutch word:")
