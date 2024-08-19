@@ -45,7 +45,7 @@ stikstofdeadline,stikstofdeadline,de,nitrogen deadline,氮排放限期,C1,0
 erfenis,erfenissen,de,heritage,遗产,B1,0
 warmte,warmte,de,hot,热量,A2,0
 hitteplan,hitteplannen,het,heat plan,热浪计划,B1,0
-boodschap,boodschappen,de,groceries,采购的物品,A2,0
+boodschap,boodschappen,de,groceries/message,采购的物品/消息,A2,0
 uitzonderingspositie,uitzonderingsposities,de,exceptional positions,豁免地位,C1,0
 exportregel,exportregels,de,export rules,出口规则,B2,0
 fabrikant,fabrikanten,de,manufacturers,制造商,A2,0
@@ -73,3 +73,5 @@ arm,armen,de,arm,手臂,A1,0
 reiziger,reizigers,de,"travelers, passengers",旅行者，乘客,A2,0
 veiligheidsrisico,veiligheidsrisico's,de,safety risks,安全风险,B2,0
 bestemming,bestemmingen,de,destination,目的地,B1,0
+achtergrond,achtergronden,de,background,背景,B1,0
+veerboot,veerboten,de,ferry,渡船,B1,0

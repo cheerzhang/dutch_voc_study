@@ -5,7 +5,7 @@ versterken,versterkt,versterken,versterkte,versterkten,versterkt,B1,0,enhance,�
 waarschuwen,waarschuwt,waarschuwen,waarschuwde,waarschuwden,gewaarschuwd,A2,0,warn,警告
 belasten,belast,belasten,belastte,belastten,belast,B1,0,tax,收税
 leunen,leunt,leunen,leunde,leunden,geleund,B2,0,to lean,依靠
-varen,vaart,varen,voer,voeren,gevaren,A2,0,sail,航行
+varen,vaart,varen,voer,voeren,gevaren,A2,1,sail,航行
 regelen,regelt,regelen,regelde,regelden,geregeld,A2,0,arrange,安排
 meegaan,gaat mee,gaan mee,ging mee,gingen mee,is meegegaan,A2,0,join,加入
 bereiden,bereidt,bereiden,bereidde,bereidden,bereid,B1,1,prepare,准备
@@ -30,3 +30,5 @@ blijven,blijft,blijven,bleef,bleven,gebleven,A2,0,"to remain, to keep",保持，
 stijgen,stijgt,stijgen,steeg,stegen,gestegen,A2,0,"to rise, to increase",上升，增加
 slaan,slaat,slaan,sloeg,sloegen,geslagen,B1,0,"to strike, to raise (alert), to sound",发出（警报），敲打
 zouden,zou,zouden,zou,zou,zou,A2,0,would,会，应该
+naderen,nadert,naderen,naderde,naderden,genaderd,B1,0,"to approach, to near",靠近，接近
+wensen,wenst,wensen,wenste,wensten,gewenst,A2,0,to wish,祝愿
