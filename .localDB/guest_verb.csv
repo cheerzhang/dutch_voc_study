@@ -10,7 +10,7 @@ regelen,regelt,regelen,regelde,regelden,geregeld,A2,0,arrange,安排
 meegaan,gaat mee,gaan mee,ging mee,gingen mee,is meegegaan,A2,0,join,加入
 bereiden,bereidt,bereiden,bereidde,bereidden,bereid,B1,1,prepare,准备
 bloeien,bloeit,bloeien,bloeide,bloeiden,gebloeid,A2,1,bloom,开花
-groeien,groeit,groeien,groeide,groeiden,gegroeid,A2,0,grow,生长
+groeien,groeit,groeien,groeide,groeiden,gegroeid,A2,1,grow,生长
 introduceren,introduceert,introduceren,introduceerde,introduceerden,geïntroduceerd,B1,0,introduce,介绍
 bekendmaken,maakt bekend,maken bekend,maakte bekend,maakten bekend,bekendgemaakt,B1,0,announce,公布
 bedoelen,bedoelt,bedoelen,bedoelde,bedoelden,bedoeld,A2,0,intend,打算
@@ -43,3 +43,5 @@ verdwijnen,verdwijnt,verdwijnen,verdween,verdwenen,verdwenen,B2,0,disappear,消�
 verschijnen,verschijnt,verschijnen,verscheen,verschenen,verschenen,B2,0,appear,出现
 verschuiven,verschuift,verschuiven,verschuift,verschoven,verschoven,B2,0,"to shift, to move",移动，挪动
 wijzen,wijst,wijzen,wees,wezen,gewezen,B1,0,to point,指
+broeden,broedt,broeden,broedde,broedden,gebroed,B1,0,"to brood, to incubate",孵化
+laten,laat,laten,liet,lieten,gelaten,B1,0,"to let, to allow",让，允许
