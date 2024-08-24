@@ -13,7 +13,7 @@ bloeien,bloeit,bloeien,bloeide,bloeiden,gebloeid,A2,1,bloom,开花
 groeien,groeit,groeien,groeide,groeiden,gegroeid,A2,1,grow,生长
 introduceren,introduceert,introduceren,introduceerde,introduceerden,geïntroduceerd,B1,0,introduce,介绍
 bekendmaken,maakt bekend,maken bekend,maakte bekend,maakten bekend,bekendgemaakt,B1,0,announce,公布
-bedoelen,bedoelt,bedoelen,bedoelde,bedoelden,bedoeld,A2,0,intend,打算
+bedoelen,bedoelt,bedoelen,bedoelde,bedoelden,bedoeld,A2,1,intend,打算
 schrappen,schrapt,schrappen,schrapte,schrapten,geschrapt,B2,0,cancel,取消
 verliezen,verliest,verliezen,verloor,verloren,verloren,A2,0,lost,失去
 bezorgen,bezorgt,bezorgen,bezorgde,bezorgden,bezorgd,A2,0,delivery,递送
@@ -26,15 +26,15 @@ volgeten,volgeten,volgeten,voldeed,voldeed,volgegeten,B2,0,eaten full,吃饱
 bemoeilijken,bemoeilijkt,bemoeilijken,bemoeilijkte,bemoeilijkten,bemoeilijkt,B1,0,to complicate,使复杂，增加困难
 omzeilen,omzeilt,omzeilen,omzeilde,omzeilden,omzeild,B2,0,"to circumvent, to bypass",绕过，规避
 melden,meldt,melden,meldde,meldden,gemeld,A2,0,"to report, to announce",报告，宣布
-blijven,blijft,blijven,bleef,bleven,gebleven,A2,0,"to remain, to keep",保持，继续
+blijven,blijft,blijven,bleef,bleven,gebleven,A2,1,"to remain, to keep",保持，继续
 stijgen,stijgt,stijgen,steeg,stegen,gestegen,A2,0,"to rise, to increase",上升，增加
 slaan,slaat,slaan,sloeg,sloegen,geslagen,B1,0,"to strike, to raise (alert), to sound",发出（警报），敲打
 zouden,zou,zouden,zou,zou,zou,A2,0,would,会，应该
 naderen,nadert,naderen,naderde,naderden,genaderd,B1,0,"to approach, to near",靠近，接近
 wensen,wenst,wensen,wenste,wensten,gewenst,A2,0,to wish,祝愿
-voelen,voelt,voelen,voelde,voelden,gevoeld,A2,1,to feel,感觉
+voelen,voelt,voelen,voelde,voelden,gevoeld,A2,2,to feel,感觉
 vallen,valt,vallen,viel,vielen,gevallen,A2,0,to fall,降落，发生
-beleven,beleeft,beleven,beleefde,beleefden,beleefd,B1,0,to experience,体验，经历
+beleven,beleeft,beleven,beleefde,beleefden,beleefd,B1,1,to experience,体验，经历
 geven,geeft,geven,gaf,gaven,gegeven,A2,0,to give,给
 duiden,duidt,duiden,duidde,duidden,duidt,B1,0,"to indicate, to point out",指示，标明
 bewegen,beweegt,bewegen,bewoog,bewogen,bewogen,B1,0,move,移动
@@ -45,3 +45,12 @@ verschuiven,verschuift,verschuiven,verschuift,verschoven,verschoven,B2,0,"to shi
 wijzen,wijst,wijzen,wees,wezen,gewezen,B1,0,to point,指
 broeden,broedt,broeden,broedde,broedden,gebroed,B1,0,"to brood, to incubate",孵化
 laten,laat,laten,liet,lieten,gelaten,B1,0,"to let, to allow",让，允许
+zorgen,zorgt,zorgen,zorgde,zorgden,gezorgd,B1,0,"to ensure, to take care of",确保，照顾
+genieten,geniet,genieten,genoot,genoten,genoten,B1,1,to enjoy,享受
+brengen,brengt,brengen,bracht,brachten,gebracht,B1,0,bring,带来
+beschermen,beschermt,beschermen,beschermde,beschermden,beschermd,B1,0,protect,保护
+verdeeld,verdeeld,verdeeld,verdeelde,verdeelden,verdeeld,B1,0,divided,被划分
+rondstruinen,struint,rondstruinen,rondstruinde,rondstruinden,rondgestruind,B1,0,"to roam, to wander",闲逛，漫游
+gelden,geldt,gelden,gold,golden,gegolden,B2,0,"to apply, to be valid",适用，生效
+terechtkomen,terechtkomt,terechtkomen,terechtkwam,terechtkwamen,terechtgekomen,B1,0,"to end up, to find oneself",到达，找到
+ontvangen,ontvangt,ontvangen,ontving,ontvingen,ontvangen,B1,0,"to receive, to welcome",接待，迎接
