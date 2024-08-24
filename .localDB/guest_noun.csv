@@ -8,7 +8,7 @@ Chinees,Chinezen,de,chinese,中国人,A2,0
 grip,grips,de,control,控制,B2,1
 passage,passages,de,Channel or waterway,通道或航道,B2,1
 hulp,hulpen,de,help,帮助,A2,0
-zorg,zorgen,de,worry,担忧,A2,2
+zorg,zorgen,de,worry,担忧,A2,3
 raketcrisis,raketcrisissen,de,rocket crisis,导弹危机,B2,1
 Koude Oorlog,-,de,Cold War,冷战,B1,1
 Democraat,Democraten,de,Democrats,民主党人,B1,1
@@ -92,3 +92,23 @@ soort,soorten,de,"species, types",种类，物种,B1,0
 stern,sterns,de,tern,燕鸥,B2,0
 tapuit,tapuiten,de,wheatear,翘尾鵟,B2,0
 omstandigheden,omstandigheden,de,conditions,条件，环境,B1,0
+broedseizoen,broedseizoen,het,breeding season,繁殖季节,B1,0
+pad,paden,de,paths,路径,A2,0
+gebied,gebieden,het,areas,区域，地区,B1,1
+bezoeker,bezoekers,de,visitors,访客，游客,A2,0
+rust,rust,de,"peace, quiet",安静，宁静,A2,0
+terrein,terreinen,het,"areas, grounds",地区，领域,B1,0
+kwetsbaarheid,kwetsbaarheid,de,vulnerability,脆弱性，易受伤害,B2,1
+lepelaar,lepelaars,de,spoonbill,匙嘴鹭,B2,0
+excursie,excursies,de,"excursion, trip",远足，考察,B2,0
+reden,redenen,de,reason,理由，原因,A2,0
+editie,edities,de,edition,版本，刊物,B2,0
+leesplezier,leesplezier,het,reading pleasure,阅读愉快,B2,0
+spelregel,spelregels,de,rules,规则,B1,0
+gebruik,gebruik,het,usage,使用,B1,0
+natuurwaarde,natuurwaarden,de,natural values,自然价值,B2,0
+betrekking,betrekkingen,de,"relation, relevance",关系，涉及,B2,0
+mtb-pad,mtb-paden,het,mountain bike paths,山地自行车道,B1,0
+ruiterpad,ruiterpaden,het,horse riding paths,骑马路径,B1,0
+natuurterreinen,natuurterreinen,het,natural areas,自然区域,B1,0
+gastheer,gastheren,de,hosts,主人,A2,0
